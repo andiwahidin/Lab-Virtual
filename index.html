@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab Maya Informatika — Stack &amp; Queue, Searching &amp; Sorting, Kabel UTP</title>
+  <meta name="description" content="Laboratorium Virtual Informatika SMA terpadu: Struktur Data Stack & Queue, Algoritma Searching & Sorting, dan Perakitan Kabel UTP dengan Teori, Simulasi, Prosedur, dan LKPD PDF A4." />
+  <meta property="og:title" content="Lab Maya Informatika — Laboratorium Virtual Terpadu" />
+  <meta property="og:description" content="Satu website laboratorium virtual Informatika SMA untuk eksperimen Stack & Queue, Searching & Sorting, dan Perakitan Kabel UTP." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/portal.css" />
+</head>
+<body>
+  <!-- TOP NAVIGATION BAR (3-Zone Contract) -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#beranda" class="brand-wordmark" onclick="event.preventDefault(); setSection('beranda')">
+        Lab Maya Informatika
+      </a>
+
+      <nav class="header-nav" aria-label="Navigasi Utama Laboratorium">
+        <button type="button" class="nav-link active" data-section="beranda" onclick="setSection('beranda')">Beranda</button>
+        <button type="button" class="nav-link" data-section="teori" onclick="setSection('teori')">Teori</button>
+        <button type="button" class="nav-link" data-section="simulasi" onclick="setSection('simulasi')">Simulasi</button>
+        <button type="button" class="nav-link" data-section="prosedur" onclick="setSection('prosedur')">Prosedur</button>
+        <button type="button" class="nav-link" data-section="lkpd" onclick="setSection('lkpd')">LKPD</button>
+      </nav>
+
+      <div class="mobile-nav-wrap">
+        <label for="mobileSectionSelect" class="sr-only">Pilih Halaman</label>
+        <select id="mobileSectionSelect" class="mobile-section-select" onchange="setSection(this.value)">
+          <option value="beranda">Beranda</option>
+          <option value="teori">Teori</option>
+          <option value="simulasi">Simulasi</option>
+          <option value="prosedur">Prosedur</option>
+          <option value="lkpd">LKPD</option>
+        </select>
+      </div>
+
+      <button type="button" class="header-cta" onclick="setSection('simulasi')">
+        Mulai Simulasi
+      </button>
+    </div>
+  </header>
+
+  <main class="site-main">
+    <!-- UNIFIED TOPIC SWITCHER BAR -->
+    <div class="topic-toolbar" role="region" aria-label="Pemilih Topik Praktikum">
+      <div class="topic-toolbar-left">
+        <span class="toolbar-label">Topik Praktikum</span>
+        <div class="topic-tabs" role="tablist" aria-label="Pilih Topik Lab Virtual">
+          <button type="button" class="topic-tab active" data-lab="stack-queue" aria-selected="true" onclick="selectLab('stack-queue')">
+            01. Stack &amp; Queue
+          </button>
+          <button type="button" class="topic-tab" data-lab="searching-sorting" aria-selected="false" onclick="selectLab('searching-sorting')">
+            02. Searching &amp; Sorting
+          </button>
+          <button type="button" class="topic-tab" data-lab="kabel-utp" aria-selected="false" onclick="selectLab('kabel-utp')">
+            03. Perakitan Kabel UTP
+          </button>
+        </div>
+      </div>
+
+      <div class="topic-toolbar-right">
+        <button type="button" id="globalSfxBtn" class="audio-btn active" aria-pressed="true" onclick="toggleGlobalSfx()">
+          SFX Aktif
+        </button>
+        <button type="button" id="globalBgmBtn" class="audio-btn" aria-pressed="false" onclick="toggleGlobalBgm()">
+          Musik Mati
+        </button>
+      </div>
+    </div>
+
+    <!-- =========================================================
+         BERANDA TERPADU (#berandaSection)
+         ========================================================= -->
+    <section id="berandaSection" class="beranda-section">
+      <!-- HERO TOPIK AKTIF -->
+      <div class="hero-split">
+        <div class="hero-copy">
+          <p id="heroKicker" class="hero-kicker">Modul 01 · Struktur Data · Kelas X Fase E</p>
+          <h1 id="heroTitle" class="hero-title">Struktur Data Tumpukan (Stack) &amp; Antrean (Queue)</h1>
+          <p id="heroDesc" class="hero-desc">
+            Eksplorasi cara kerja penyimpanan data LIFO (Push &amp; Pop) dan FIFO (Enqueue &amp; Dequeue) pada studi kasus antrean formulir loket rumah sakit dan tumpukan piring.
+          </p>
+
+          <div class="hero-actions">
+            <button type="button" class="btn-primary" onclick="setSection('simulasi')">
+              Buka Meja Simulasi
+            </button>
+            <button type="button" class="btn-secondary" onclick="setSection('teori')">
+              Pelajari Materi Teori
+            </button>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span id="heroMissionsCount" class="stat-value tabular-nums">04</span>
+              <span class="stat-label">Misi Praktikum</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value tabular-nums">10</span>
+              <span class="stat-label">Soal LKPD Digital</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-value tabular-nums">A4</span>
+              <span class="stat-label">Ekspor Laporan PDF</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual-card">
+          <div class="hero-visual-frame">
+            <img
+              id="heroImage"
+              src="/src/assets/images/lab_stack_queue_1795006595233.jpg"
+              alt="Ilustrasi modul praktikum aktif"
+              referrerpolicy="no-referrer"
+              onerror="this.closest('.hero-visual-frame').classList.add('is-fallback')"
+            />
+            <div class="hero-visual-fallback">
+              <span id="heroFallbackLabel">Lab Maya Informatika</span>
+            </div>
+          </div>
+          <div class="hero-visual-caption">
+            <span id="heroFocusText">Fokus: Perbandingan prinsip LIFO vs FIFO dan keadilan antrean.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 TAHAP ALUR PRAKTIKUM TOPIK AKTIF -->
+      <div class="workflow-section">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-kicker">Alur Belajar Topik Aktif</p>
+            <h2 id="workflowHeading" class="section-title">Empat Tahap Praktikum: Stack &amp; Queue</h2>
+          </div>
+          <span class="workflow-note">Setiap topik memiliki teori, simulator, prosedur, dan LKPD tersendiri.</span>
+        </div>
+
+        <div class="workflow-grid">
+          <button type="button" class="workflow-card" onclick="setSection('teori')">
+            <span class="wf-index tabular-nums">01</span>
+            <h3>Materi &amp; Teori</h3>
+            <p id="wfTeoriDesc">Studi kasus loket rumah sakit, konsep Stack (LIFO) vs Queue (FIFO), dan tabel pembanding.</p>
+            <span class="wf-action">Buka Teori →</span>
+          </button>
+
+          <button type="button" class="workflow-card wf-primary" onclick="setSection('simulasi')">
+            <span class="wf-index tabular-nums">02</span>
+            <h3>Simulasi Interaktif</h3>
+            <p id="wfSimulasiDesc">Meja kerja Push/Pop &amp; Enqueue/Dequeue, 4 misi berjenjang, dan pencatatan tabel percobaan.</p>
+            <span class="wf-action">Buka Simulasi →</span>
+          </button>
+
+          <button type="button" class="workflow-card" onclick="setSection('prosedur')">
+            <span class="wf-index tabular-nums">03</span>
+            <h3>Prosedur Percobaan</h3>
+            <p id="wfProsedurDesc">Panduan langkah kerja terstruktur dari pengamatan masalah hingga verifikasi data eksperimen.</p>
+            <span class="wf-action">Lihat Prosedur →</span>
+          </button>
+
+          <button type="button" class="workflow-card" onclick="setSection('lkpd')">
+            <span class="wf-index tabular-nums">04</span>
+            <h3>LKPD &amp; Ekspor PDF</h3>
+            <p id="wfLkpdDesc">10 soal analisis dan diagnostik otomatis dengan konversi laporan praktikum berformat PDF A4.</p>
+            <span class="wf-action">Kerjakan LKPD →</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- DAFTAR RINGKAS SEMUA TOPIK -->
+      <div class="topics-overview">
+        <div class="section-heading-row">
+          <div>
+            <p class="section-kicker">Pilihan Topik Laboratorium</p>
+            <h2 class="section-title">Beralih Cepat Antar Materi Praktikum</h2>
+          </div>
+        </div>
+
+        <div class="overview-grid">
+          <article class="overview-card active" data-lab="stack-queue">
+            <div class="ov-meta tabular-nums">Modul 01 · Struktur Data · 4 Misi</div>
+            <h3>Stack &amp; Queue</h3>
+            <p>Prinsip tumpukan (LIFO) dan antrean (FIFO) dengan studi kasus loket rumah sakit serta tumpukan piring.</p>
+            <div class="ov-actions">
+              <button type="button" class="ov-btn" onclick="openLabAt('stack-queue', 'teori')">Teori</button>
+              <button type="button" class="ov-btn ov-btn-primary" onclick="openLabAt('stack-queue', 'simulasi')">Simulasi</button>
+              <button type="button" class="ov-btn" onclick="openLabAt('stack-queue', 'lkpd')">LKPD</button>
+            </div>
+          </article>
+
+          <article class="overview-card" data-lab="searching-sorting">
+            <div class="ov-meta tabular-nums">Modul 02 · Algoritma · 6 Misi</div>
+            <h3>Searching &amp; Sorting</h3>
+            <p>Sequential &amp; Binary Search serta Bubble, Insertion, dan Selection Sort dengan pelacak kesalahan teknik.</p>
+            <div class="ov-actions">
+              <button type="button" class="ov-btn" onclick="openLabAt('searching-sorting', 'teori')">Teori</button>
+              <button type="button" class="ov-btn ov-btn-primary" onclick="openLabAt('searching-sorting', 'simulasi')">Simulasi</button>
+              <button type="button" class="ov-btn" onclick="openLabAt('searching-sorting', 'lkpd')">LKPD</button>
+            </div>
+          </article>
+
+          <article class="overview-card" data-lab="kabel-utp">
+            <div class="ov-meta tabular-nums">Modul 03 · Jaringan Komputer · 5 Misi</div>
+            <h3>Perakitan Kabel UTP</h3>
+            <p>Terminasi konektor RJ-45 standar T568A &amp; T568B untuk kabel Straight-Through &amp; Crossover + LAN Tester.</p>
+            <div class="ov-actions">
+              <button type="button" class="ov-btn" onclick="openLabAt('kabel-utp', 'teori')">Teori</button>
+              <button type="button" class="ov-btn ov-btn-primary" onclick="openLabAt('kabel-utp', 'simulasi')">Simulasi</button>
+              <button type="button" class="ov-btn" onclick="openLabAt('kabel-utp', 'lkpd')">LKPD</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- PROFIL PENGEMBANG TERPADU -->
+      <section id="pengembang" class="developer-block">
+        <div class="dev-photo-wrap">
+          <img
+            src="/src/assets/images/dev_avatar.png"
+            alt="Foto Profil Andi Wahidin Burhanuddin"
+            referrerpolicy="no-referrer"
+            onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 120 120%22><rect width=%22120%22 height=%22120%22 fill=%22%23162238%22/><circle cx=%2260%22 cy=%2246%22 r=%2222%22 fill=%22%230ea5e9%22/><path d=%22M24 108 C24 82 96 82 96 108%22 fill=%22%2338bdf8%22/></svg>';"
+          />
+        </div>
+        <div class="dev-info">
+          <p class="section-kicker">Pengembang Laboratorium Virtual</p>
+          <h3>Andi Wahidin Burhanuddin</h3>
+          <p class="dev-meta">Guru Informatika · UPT SMA Negeri 12 Wajo · Sulawesi Selatan</p>
+          <p class="dev-bio">
+            Mengembangkan media praktikum interaktif Informatika SMA (Fase E &amp; Fase F) yang menyatukan eksperimen struktur data, algoritma pemrograman, dan perakitan jaringan komputer dalam satu platform pembelajaran terpadu.
+          </p>
+        </div>
+      </section>
+    </section>
+
+    <!-- =========================================================
+         STAGE MODUL TERPADU (TEORI / SIMULASI / PROSEDUR / LKPD)
+         ========================================================= -->
+    <section id="moduleStageSection" class="module-stage hidden" aria-live="polite">
+      <div id="moduleLoadingHint" class="module-loading hidden">
+        Memuat ruang kerja modul praktikum...
+      </div>
+      <div id="framesHost" class="frames-host"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span>Lab Maya Informatika · SMA Negeri 12 Wajo, Sulawesi Selatan</span>
+      <div class="footer-links">
+        <button type="button" class="footer-btn" onclick="openLabAt('stack-queue', 'simulasi')">Stack &amp; Queue</button>
+        <button type="button" class="footer-btn" onclick="openLabAt('searching-sorting', 'simulasi')">Searching &amp; Sorting</button>
+        <button type="button" class="footer-btn" onclick="openLabAt('kabel-utp', 'simulasi')">Kabel UTP</button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/portal.js"></script>
+</body>
+</html>

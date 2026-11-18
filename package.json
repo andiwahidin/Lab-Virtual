@@ -1,0 +1,15 @@
+{
+  "name": "lab-virtual-queue-stack",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js",
+    "build": "node -e \"console.log('Static site ready')\"",
+    "lint": "node --check server.js && node --check portal.js && node --check labs/unified-embed.js && node --check labs/stack-queue/script.js && node --check labs/searching-sorting/script.js && node --check labs/kabel-utp/script.js"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}

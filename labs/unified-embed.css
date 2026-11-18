@@ -1,0 +1,333 @@
+/* ==========================================================================
+   UNIFIED-EMBED.CSS
+   Menyelaraskan tampilan & responsivitas mobile seluruh modul lab
+   (Stack & Queue, Searching & Sorting, Perakitan Kabel UTP).
+   Hanya aktif saat html.is-embedded (?embed=1).
+   ========================================================================== */
+
+html.is-embedded {
+  --bg-top: #0b1220 !important;
+  --bg-mid: #0b1220 !important;
+  --bg-bottom: #0b1220 !important;
+  --bg-deep: #0b1220 !important;
+  --bg-cyber: #111b2e !important;
+  --card-bg: #111b2e !important;
+  --bg-card: #111b2e !important;
+  --bg-card-strong: #162238 !important;
+  --card-inner: #162238 !important;
+  --card-border: #24334c !important;
+  --border-glass: #24334c !important;
+  --accent-cyan: #0ea5e9 !important;
+  --cyan: #0ea5e9 !important;
+  --accent-yellow: #f59e0b !important;
+  --accent-gold: #f59e0b !important;
+  --yellow: #f59e0b !important;
+  --text-main: #f1f5f9 !important;
+  --text-muted: #94a3b8 !important;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  --font-mono: 'JetBrains Mono', monospace !important;
+}
+
+html.is-embedded *,
+html.is-embedded *::before,
+html.is-embedded *::after {
+  box-sizing: border-box !important;
+}
+
+html.is-embedded,
+html.is-embedded body {
+  background: transparent !important;
+  background-image: none !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 0 !important;
+  height: auto !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  color: #f1f5f9 !important;
+}
+
+/* Sembunyikan chrome duplikat saat berjalan di dalam website terpadu */
+html.is-embedded #mainHeader,
+html.is-embedded #loadingOverlay,
+html.is-embedded #bgCanvas,
+html.is-embedded .bottom-silhouette,
+html.is-embedded .bottom-circuit,
+html.is-embedded .floating-audio-controls,
+html.is-embedded .audio-controls,
+html.is-embedded #view-splash,
+html.is-embedded #view-home,
+html.is-embedded #view-pengembang,
+html.is-embedded .btn-home-yellow[onclick*="home"] {
+  display: none !important;
+}
+
+/* Samakan tipografi judul & container utama */
+html.is-embedded h1,
+html.is-embedded h2,
+html.is-embedded h3,
+html.is-embedded h4,
+html.is-embedded .font-display {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  letter-spacing: -0.015em !important;
+}
+
+html.is-embedded .app-container {
+  max-width: 1240px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0.5rem 1.5rem 2.5rem !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* Mencegah grid/flex child meluber keluar layar (Anti-Clipping) */
+html.is-embedded .app-container,
+html.is-embedded .view,
+html.is-embedded .lab-card,
+html.is-embedded .glass-panel,
+html.is-embedded .sim-Command-Grid > *,
+html.is-embedded .sim-workspace-grid > *,
+html.is-embedded .sim-top-grid > *,
+html.is-embedded .right-tester-col > *,
+html.is-embedded .grid-2 > *,
+html.is-embedded .grid-3 > *,
+html.is-embedded .grid-4 > *,
+html.is-embedded .tester-units-grid > *,
+html.is-embedded .end-selector-grid > *,
+html.is-embedded .palette-grid > *,
+html.is-embedded .pin-grid-8 > *,
+html.is-embedded .theory-cards-grid > *,
+html.is-embedded .core-diagram-grid > * {
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+html.is-embedded p,
+html.is-embedded span,
+html.is-embedded div,
+html.is-embedded h1,
+html.is-embedded h2,
+html.is-embedded h3,
+html.is-embedded h4,
+html.is-embedded label,
+html.is-embedded .readout-sub,
+html.is-embedded .readout-note {
+  overflow-wrap: break-word;
+}
+
+/* Samakan header tiap seksi (Teori, Simulasi, Prosedur, LKPD) */
+html.is-embedded .section-header,
+html.is-embedded .page-top-bar {
+  margin-bottom: 1.5rem !important;
+  padding-bottom: 1rem !important;
+  border-bottom: 1px solid #24334c !important;
+}
+
+html.is-embedded .section-badge,
+html.is-embedded .top-badge-yellow {
+  display: inline-block !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  color: #f59e0b !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 0.78rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.02em !important;
+  margin-bottom: 0.35rem !important;
+}
+
+/* Selaraskan kartu agar single-elevation & seragam di semua lab */
+html.is-embedded .glass-panel,
+html.is-embedded .theory-case-banner,
+html.is-embedded .theory-card,
+html.is-embedded .theory-table-card,
+html.is-embedded .hots-box,
+html.is-embedded .sim-goal-card,
+html.is-embedded .sim-mission-card,
+html.is-embedded .workbench-panel,
+html.is-embedded .output-panel,
+html.is-embedded .experiment-table-card,
+html.is-embedded .proc-card,
+html.is-embedded .lkpd-identity-card,
+html.is-embedded .lkpd-section-card,
+html.is-embedded .lab-card,
+html.is-embedded .proc-item {
+  background: #111b2e !important;
+  border: 1px solid #24334c !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+html.is-embedded .control-box,
+html.is-embedded .visualizer-stage,
+html.is-embedded .tele-box,
+html.is-embedded .output-queue-box,
+html.is-embedded .log-terminal,
+html.is-embedded .mission-instruction,
+html.is-embedded .question-item,
+html.is-embedded .rj45-housing-box,
+html.is-embedded .tester-units-grid {
+  border-color: #24334c !important;
+}
+
+html.is-embedded input[type="text"],
+html.is-embedded select,
+html.is-embedded textarea,
+html.is-embedded .lkpd-input,
+html.is-embedded .lkpd-textarea {
+  background: #0b1220 !important;
+  border: 1px solid #24334c !important;
+  color: #f1f5f9 !important;
+  border-radius: 8px !important;
+  max-width: 100% !important;
+}
+
+html.is-embedded input[type="text"]:focus,
+html.is-embedded select:focus,
+html.is-embedded textarea:focus,
+html.is-embedded .lkpd-input:focus,
+html.is-embedded .lkpd-textarea:focus {
+  border-color: #0ea5e9 !important;
+  outline: none !important;
+}
+
+html.is-embedded .btn-primary-xl,
+html.is-embedded .btn-gold,
+html.is-embedded .btn-home-yellow {
+  background: #0ea5e9 !important;
+  color: #ffffff !important;
+  border: 1px solid transparent !important;
+  box-shadow: none !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  max-width: 100% !important;
+}
+
+html.is-embedded .btn-primary-xl:hover,
+html.is-embedded .btn-gold:hover,
+html.is-embedded .btn-home-yellow:hover {
+  background: #0284c7 !important;
+}
+
+html.is-embedded .table-responsive {
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE MOBILE FIXES (360px - 768px) UNTUK KETIGA MODUL
+   ========================================================================== */
+@media (max-width: 920px) {
+  html.is-embedded .sim-Command-Grid,
+  html.is-embedded .sim-top-grid,
+  html.is-embedded .sim-workspace-grid,
+  html.is-embedded .grid-2,
+  html.is-embedded .grid-3,
+  html.is-embedded .grid-4,
+  html.is-embedded .theory-cards-grid,
+  html.is-embedded .core-diagram-grid,
+  html.is-embedded .core-grid,
+  html.is-embedded .intro-sort-demo,
+  html.is-embedded .algo-explain-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
+
+@media (max-width: 720px) {
+  html.is-embedded .app-container {
+    padding: 0.25rem 0.85rem 2rem !important;
+  }
+
+  html.is-embedded .lab-card,
+  html.is-embedded .glass-panel,
+  html.is-embedded .workbench-panel,
+  html.is-embedded .output-panel,
+  html.is-embedded .lkpd-section-card {
+    padding: 1rem 0.85rem !important;
+  }
+
+  /* Kabel UTP: Pin Grid 8 -> 4x2 agar muat tanpa meluber */
+  html.is-embedded .pin-grid-8 {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+
+  html.is-embedded .palette-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+
+  html.is-embedded .end-selector-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  html.is-embedded .workbench-header,
+  html.is-embedded .pin-toolbar-row,
+  html.is-embedded .rj45-footer-bar,
+  html.is-embedded .tester-header-row,
+  html.is-embedded .crimp-action-bar,
+  html.is-embedded .btn-group-wrap {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+  }
+
+  html.is-embedded .btn-crimp-single,
+  html.is-embedded .btn-crimp-both,
+  html.is-embedded .btn-strip,
+  html.is-embedded .btn-cheat {
+    width: 100% !important;
+    white-space: normal !important;
+    line-height: 1.35 !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  html.is-embedded .tester-units-grid,
+  html.is-embedded .tester-btn-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 10px !important;
+    padding: 10px !important;
+  }
+
+  html.is-embedded .readout-main {
+    font-size: 1.45rem !important;
+    line-height: 1.2 !important;
+  }
+
+  html.is-embedded .readout-sub,
+  html.is-embedded .readout-note {
+    font-size: 0.78rem !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+
+  html.is-embedded .lkpd-short-input {
+    max-width: 100% !important;
+  }
+
+  html.is-embedded .diag-input-row,
+  html.is-embedded .cek-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+
+  html.is-embedded .diag-input-row input,
+  html.is-embedded .cek-row input {
+    width: 100% !important;
+  }
+
+  html.is-embedded .proc-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 14px !important;
+    gap: 10px !important;
+  }
+}
